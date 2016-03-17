@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        debug {
+            keyAlias 'debug'
+            keyPassword 'debug123'
+            storeFile file('C:/android_keystore/debug.keystore')
+            storePassword 'debug123'
+        }
+        release {
+            keyAlias 'release'
+            keyPassword 'release123'
+            storeFile file('C:/android_keystore/release.keystore')
+            storePassword 'release123'
+        }
+    }
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+    defaultConfig {
+        applicationId "com.inteliment.navigationapp"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+        RELEASE {
+            signingConfig signingConfigs.release
+        }
+        DEBUG {
+            applicationId 'com.inteliment.navigationapp_debug'
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.android.support:design:23.0.1'
+    compile 'com.google.android.gms:play-services:8.4.0'
+    compile 'com.googlecode.android-query:android-query:0.25.9'
+    compile 'com.google.code.gson:gson:2.3.1'
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
+
+
+}

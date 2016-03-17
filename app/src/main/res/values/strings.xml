@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">navigationapp</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="navigate">Navigate</string>
+    <string name="google_app_id">640453540007</string>
+    <string name="select">Select</string>
+    <string name="modeoftransport">Mode Of Transport</string>
+    <string name="mapview">Map</string>
+    <string name="navigation_app">Navigation</string>
+    <string name="okey">Okey</string>
+    <string name="please_check_internet_connection">Please check the internet connection</string>
+    <string name="connection_error">No Internet</string>
+</resources>
