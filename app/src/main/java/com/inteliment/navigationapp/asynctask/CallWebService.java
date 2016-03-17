@@ -10,9 +10,12 @@ import com.inteliment.navigationapp.Webservice;
 
 import java.io.IOException;
 
+// AsyncTask for initiating webservice call
 public class CallWebService extends AsyncTask<String,Void,String> {
     Context mContext;
     ProgressDialog progress;
+
+
 
     public CallWebService(Context context) {
         mContext=context;
@@ -21,7 +24,7 @@ public class CallWebService extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... params) {
         try {
-            return Webservice.invokeWebService();
+            return Webservice.invokeSampleWebService();
         } catch (IOException e) {
             e.printStackTrace();
             return "";
@@ -38,6 +41,8 @@ public class CallWebService extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPostExecute(String s) {
+
+        // handling the webservice response and pass it to the main context
 
         if(null!=progress)
         {

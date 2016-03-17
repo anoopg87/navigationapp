@@ -35,7 +35,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(Bundle outState) {
 
+
+
         if(null!=simpModel) {
+            // used to handle the orientation changes
+          //  it stores the SimpleJsonArray and selected location informations
             outState.putInt("position",Selectedposition);
             outState.putParcelable("obj", simpModel);
             outState.putParcelableArrayList("objlist", sampleList);
@@ -48,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(null!=savedInstanceState){
+            // checking for the saved onstance state values
+            // used for handling the configuration changes
             simpModel=savedInstanceState.getParcelable("obj");
             sampleList=savedInstanceState.getParcelableArrayList("objlist");
             Selectedposition=savedInstanceState.getInt("position");
@@ -82,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         if(null==sampleList){
+            // this if statement stop the webservice calling each timne on orientation change
 
             if (ConnectionLookUP.isInternetConnectionActive(MainActivity.this)) {
                 new CallWebService(MainActivity.this).execute();
@@ -93,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
             loadAdapter();
             if(null!=simpModel){
+                // this if statement update the selected location information
                 updateViewonSelection(Selectedposition);
             }
         }
@@ -103,10 +111,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadSpinner(final String s) {
 
+        // call back from the CallWebservice asynctask
+        // it converts the JSONArray to the SimpleJSON array object
         String result=s;
-        System.out.println(result);
-
-        if(null!=result) {
+           if(null!=result) {
             Type listType = new TypeToken<ArrayList<SampleJsonModel>>() {
             }.getType();
             sampleList = new Gson().fromJson(result.toString(), listType);
@@ -116,6 +124,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    // This code will update the selected location info in the view
     private void updateViewonSelection(int position){
         spinner.setSelection(position);
 
@@ -137,6 +147,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    // load spinner with the Arraylist from the webservice
     public void loadAdapter(){
         SpinnerAdapter spinnerAdapter=new SpinnerAdapter(sampleList);
         spinner.setAdapter(spinnerAdapter);

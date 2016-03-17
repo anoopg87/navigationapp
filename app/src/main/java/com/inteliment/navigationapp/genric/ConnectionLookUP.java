@@ -9,6 +9,8 @@ import android.net.NetworkInfo;
 
 public class ConnectionLookUP {
 
+    // inernet connection checking function
+
     public static boolean isInternetConnectionActive(Context context) {
         try {
 

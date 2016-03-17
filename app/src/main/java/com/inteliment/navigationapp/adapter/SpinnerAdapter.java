@@ -11,11 +11,13 @@ import com.inteliment.navigationapp.model.SampleJsonModel;
 
 import java.util.List;
 
-
+// Spinner custom adapter for listing location names
 public class SpinnerAdapter extends BaseAdapter {
     List<SampleJsonModel> mDataSet;
     View mView;
 
+
+   // constructor with dataset
     public SpinnerAdapter(List<SampleJsonModel> dataSet) {
         mDataSet=dataSet;
     }

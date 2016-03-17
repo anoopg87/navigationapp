@@ -1,6 +1,6 @@
 package com.inteliment.navigationapp;
 
-import android.support.v4.app.FragmentActivity;
+
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +13,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.inteliment.navigationapp.model.SampleJsonModel;
 
+
+// Mapfragment to display the location
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
     SampleJsonModel sampleJsonModel;
@@ -26,6 +28,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         toolbar.setTitle(getResources().getString(R.string.mapview));
         toolbar.setNavigationIcon(R.drawable.ic_back);
         setSupportActionBar(toolbar);
+        // get the selected location information from the main class
         sampleJsonModel=getIntent().getParcelableExtra("OBJ");
              SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -34,6 +37,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
+        // add pin in map view with the information of the selected location
         mMap = googleMap;
         if(null!=sampleJsonModel){
             LatLng sydney = new LatLng(Double.valueOf(sampleJsonModel.getLocation().getLatitude()), Double.valueOf(sampleJsonModel.getLocation().getLongitude()));

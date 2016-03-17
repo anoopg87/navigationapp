@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.TextView;
 import com.inteliment.navigationapp.R;
 
+
+// Dialog fragment for showing the network error
 public class ConnectionErrorDialog extends DialogFragment {
 
     View mView;
